@@ -24,11 +24,10 @@
           </td>
           <td>
             <v-btn
-              flat 
-              icon 
+              flat
+              icon
               @click="editTodo(props.item)"
               color="warning">
-
               <v-icon>edit</v-icon>
             </v-btn>
             <v-btn flat icon color="red">
@@ -105,15 +104,15 @@ export default {
       dialog: false,
       idEdit: 0,
       todos: [
-        { id: 1, text: 'Copiar datos de plantillas iniciales a finales', completed: false },
-        { id: 2, text: 'Añadir De, PARA y CARGO en la vista de resumen', completed: false },
-        { id: 3, text: 'Asignación de correlativos en los instrumentos camarales', completed: false },
+        { id: 1, text: 'Copiar datos de plantillas iniciales a finales', completed: true },
+        { id: 2, text: 'Añadir De, PARA y CARGO en la vista de resumen', completed: true },
+        { id: 3, text: 'Asignación de correlativos en los instrumentos camarales', completed: true },
         { id: 4, text: 'Añadir funcionalidades a los botones de instrumentos', completed: false }
       ],
       headers: [
-        { text: 'Descripcion', value: 'text', sortable: false },
-        { text: 'Completado', value: 'completed', sortable: false },
-        { text: 'AccioneS', value: 'actions', sortable: false }
+        { text: 'Descripcion de la Tarea', value: 'text', sortable: false },
+        { text: 'Estado', value: 'completed', sortable: false },
+        { text: 'Acciones', value: 'actions', sortable: false }
       ]
     }
   },
@@ -137,7 +136,7 @@ export default {
       this.idEdit = todo.id
     },
     saveEdit () {
-      console.log('guardando...');
+      console.log('guardando...')
     }
   }
 }
@@ -157,4 +156,3 @@ export default {
     margin-bottom: 20px;
   }
 </style>
-

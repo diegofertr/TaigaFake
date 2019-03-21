@@ -1,5 +1,12 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div>
+    <v-container fluid>
+      <h1>Acerca de...</h1>
+      <hr>
+    </v-container>
+    <v-footer class="pa-3">
+      <v-spacer></v-spacer>
+      <div>&copy; {{ new Date().getFullYear() }} by Diego Ticona</div>
+    </v-footer>
   </div>
 </template>

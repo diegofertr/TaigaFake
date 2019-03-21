@@ -29,22 +29,18 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
   data () {
     return {
       links: [
         { text: 'Inicio', url: '/' },
+        { text: 'Kanban', url: '/kanban' },
         { text: 'Tareas', url: '/todos' },
-        { text: 'About', url: '/about' },
+        { text: 'About', url: '/about' }
       ]
     }
-  }, 
+  },
   methods: {
     send (url) {
       this.$router.push(url)
