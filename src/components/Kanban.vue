@@ -7,7 +7,7 @@
         <div class="draggable-left">
           <h3 class="titulo-draggable">PENDIENTES</h3>
           <draggable class="list-group" :list="list1" group="people" @change="log">
-            <v-card 
+            <v-card
               color="grey lighten-4"
               class="blue--text list-group-item cajita"
               v-for="element in list1"
@@ -27,8 +27,8 @@
         <div class="draggable-right">
           <h3 class="titulo-draggable">COMPLETADOS</h3>
           <draggable class="list-group" :list="list2" group="people" @change="log">
-            <v-card 
-              color="teal lighten-4" 
+            <v-card
+              color="teal lighten-4"
               class="teal--text list-group-item cajita"
               v-for="element in list2"
               :key="element.name">
@@ -51,46 +51,46 @@
   </v-container>
 </template>
 <script>
-import draggable from "vuedraggable";
+import draggable from 'vuedraggable'
 export default {
-  name: "two-lists",
-  display: "Two Lists",
+  name: 'two-lists',
+  display: 'Two Lists',
   order: 1,
   components: {
     draggable
   },
-  data() {
+  data () {
     return {
       list1: [
-        { name: "Aprender VueElectron", id: 1 },
-        { name: "Aprender Docker", id: 2 },
-        { name: "Desarrollar app con Flutter", id: 3 },
-        { name: "Acabar el Desarrollo de la Asamblea", id: 4 }
+        { name: 'Aprender VueElectron', id: 1 },
+        { name: 'Aprender Docker', id: 2 },
+        { name: 'Desarrollar app con Flutter', id: 3 },
+        { name: 'Acabar el Desarrollo de la Asamblea', id: 4 }
       ],
       list2: [
-        { name: "Acabar la Tesis", id: 5 },
-        { name: "Encontrar Trabajo", id: 6 },
-        { name: "Aprender Vue", id: 7 }
+        { name: 'Acabar la Tesis', id: 5 },
+        { name: 'Encontrar Trabajo', id: 6 },
+        { name: 'Aprender Vue', id: 7 }
       ]
-    };
+    }
   },
   methods: {
-    add: function() {
-      this.list.push({ name: "Juan" });
+    add: function () {
+      this.list.push({ name: 'Juan' })
     },
-    replace: function() {
-      this.list = [{ name: "Edgard" }];
+    replace: function () {
+      this.list = [{ name: 'Edgard' }]
     },
-    clone: function(el) {
+    clone: function (el) {
       return {
-        name: el.name + " cloned"
-      };
+        name: `${el.name} cloned`
+      }
     },
-    log: function(evt) {
-      window.console.log(evt);
+    log: function (evt) {
+      window.console.log(evt)
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
@@ -105,7 +105,7 @@ export default {
    padding: 15px;
    border-radius: 15px;
    margin-right: 10px;
-  
+
    .titulo-draggable {
      color: black;
      font-size: 1.5rem;
@@ -119,7 +119,7 @@ export default {
    padding: 15px;
    border-radius: 15px;
    margin-left: 10px;
-  
+
    .titulo-draggable {
      color: black;
      font-size: 1.5rem;
