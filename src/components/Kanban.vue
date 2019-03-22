@@ -1,15 +1,41 @@
 <template>
   <v-container fluid>
-    <h1 class="text-xs-center">Kanban Section</h1>
-    <hr><br />
+    <h1 class="text-xs-left">PROJECT <span class="title-kanban">KANBAN</span></h1>
+    <br />
     <v-layout wrap>
-      <v-flex md6>
-        <div class="draggable-left">
-          <h3 class="titulo-draggable">PENDIENTES</h3>
+      <v-flex md3>
+        <div class="draggable-box">
+          <div class="draggable-header">
+            <h3 class="draggable-header-title">NUEVA</h3>
+          </div>
           <draggable class="list-group" :list="list1" group="people" @change="log">
             <v-card
+              raised
               color="grey lighten-4"
-              class="blue--text list-group-item cajita"
+              class="blue--text list-group-item draggable-card"
+              v-for="element in list1"
+              :key="element.name">
+              <v-card-title primary-title>
+                <div class="title">{{ element.name }}</div>
+                <v-spacer></v-spacer>
+                <v-btn flat icon dark color="warning">
+                  <v-icon>edit</v-icon>
+                </v-btn>
+              </v-card-title>
+            </v-card>
+          </draggable>
+        </div>
+      </v-flex>
+      <v-flex md3>
+        <div class="draggable-box">
+          <div class="draggable-header">
+            <h3 class="draggable-header-title">PREPARADA</h3>
+          </div>
+          <draggable class="list-group" :list="list1" group="people" @change="log">
+            <v-card
+              raised
+              color="grey lighten-4"
+              class="blue--text list-group-item draggable-card"
               v-for="element in list1"
               :key="element.name">
               <v-card-title primary-title>
@@ -94,37 +120,57 @@ export default {
 </script>
 
 <style lang="scss">
- .cajita {
-   margin-bottom: 8px;
-   border-radius: 10px;
-   cursor: move;
- }
+  .title-kanban {
+    color: #849c5e;
+  }
 
- .draggable-left {
-   background: rgb(222, 224, 224);
-   padding: 15px;
-   border-radius: 15px;
-   margin-right: 10px;
+  .cajita {
+    margin-bottom: 8px;
+    border-radius: 10px;
+    cursor: move;
+  }
 
-   .titulo-draggable {
-     color: black;
-     font-size: 1.5rem;
-     font-weight: bold;
-     margin-bottom: 20px;
-   }
- }
+  .draggable-left {
+    background: rgb(222, 224, 224);
+    padding: 15px;
+    border-radius: 15px;
+    margin-right: 10px;
+ 
+    .titulo-draggable {
+      color: black;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  }
 
- .draggable-right {
-   background: rgb(187, 148, 187);
-   padding: 15px;
-   border-radius: 15px;
-   margin-left: 10px;
+  .draggable-right {
+    background: rgb(187, 148, 187);
+    padding: 15px;
+    border-radius: 15px;
+    margin-left: 10px;
 
-   .titulo-draggable {
-     color: black;
-     font-size: 1.5rem;
-     font-weight: bold;
-     margin-bottom: 20px;
-   }
- }
+    .titulo-draggable {
+      color: black;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  }
+
+  .draggable-box {
+    background-color: #f5f5f5;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-top: solid 2px #999999;
+    padding: 15px;
+
+    .draggable-header-title {
+      color: gray;
+    }
+
+    .draggable-card {
+      margin-bottom: 15px;
+    }
+  }
 </style>
