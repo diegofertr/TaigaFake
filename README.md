@@ -29,6 +29,9 @@ Mira [Configuration Reference](https://nklayman.github.io/vue-cli-plugin-electro
 
 > #### Documentación de [Electron](https://electronjs.org/docs/api/browser-window)
 
+> #### Documentación de [Firestore](https://firebase.google.com/docs/firestore/?hl=es-419)
+
+
 
 --------
 ## Características
