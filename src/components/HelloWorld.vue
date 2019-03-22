@@ -6,7 +6,7 @@
     >
       <v-flex xs12>
         <v-img
-          :src="require('../assets/taiga.png')"
+          :src="require('../assets/img/logo-color.png')"
           class="my-3"
           contain
           height="150"
@@ -28,25 +28,25 @@
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      whatsNext: [
-        {
-          text: 'Explore components',
-          href: 'https://vuetifyjs.com/components/api-explorer'
-        },
-        {
-          text: 'Select a layout',
-          href: 'https://vuetifyjs.com/layout/pre-defined'
-        },
-        {
-          text: 'Frequently Asked Questions',
-          href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions'
-        }
+export default {
+  data: () => ({
+    whatsNext: [
+      {
+        text: 'Explore components',
+        href: 'https://vuetifyjs.com/components/api-explorer'
+      },
+      {
+        text: 'Select a layout',
+        href: 'https://vuetifyjs.com/layout/pre-defined'
+      },
+      {
+        text: 'Frequently Asked Questions',
+        href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions'
+      }
 
-      ]
-    })
-  }
+    ]
+  })
+}
 </script>
 
 <style>

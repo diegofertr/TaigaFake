@@ -15,7 +15,10 @@ let win
 protocol.registerStandardSchemes(['app'], { secure: true })
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({ width: 1200, height: 700 })
+  // win = new BrowserWindow({ width: 1200, height: 700 }) // modo ventana de tamaño 1024*768
+  win = new BrowserWindow()
+  win.maximize() // modo maximizado
+  // win.setFullScreen(true) // modo pantalla completa
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode

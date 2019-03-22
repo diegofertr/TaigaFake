@@ -27,6 +27,8 @@ Aplicacion de escritorio fake de la aplicacion [Taiga](https://taiga.io/) para l
 #### Configuración personalizada
 Mira [Configuration Reference](https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/).
 
+> #### Documentación de [Electron](https://electronjs.org/docs/api/browser-window)
+
 
 --------
 ## Características
