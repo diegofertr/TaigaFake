@@ -1,69 +1,140 @@
 <template>
   <v-container fluid>
-    <h1 class="text-xs-left">PROJECT <span class="title-kanban">KANBAN</span></h1>
+    <h1 class="text-xs-left"> <span class="title-kanban">PROJECT </span> <span class="subtitle-kanban">KANBAN</span></h1>
     <br />
     <v-layout wrap>
-      <v-flex md3>
-        <div class="draggable-box">
+      <v-flex md2>
+        <div class="draggable-box-new">
           <div class="draggable-header">
             <h3 class="draggable-header-title">NUEVA</h3>
           </div>
           <draggable class="list-group" :list="list1" group="people" @change="log">
             <v-card
               raised
-              color="grey lighten-4"
-              class="blue--text list-group-item draggable-card"
+              color="white"
+              class="grey--text list-group-item draggable-card"
               v-for="element in list1"
               :key="element.name">
               <v-card-title primary-title>
                 <div class="title">{{ element.name }}</div>
                 <v-spacer></v-spacer>
-                <v-btn flat icon dark color="warning">
+                <!-- <v-btn flat icon dark color="warning">
                   <v-icon>edit</v-icon>
-                </v-btn>
+                </v-btn> -->
               </v-card-title>
             </v-card>
           </draggable>
         </div>
       </v-flex>
-      <v-flex md3>
-        <div class="draggable-box">
+      <v-flex md2>
+        <div class="draggable-box-prepared">
           <div class="draggable-header">
             <h3 class="draggable-header-title">PREPARADA</h3>
           </div>
           <draggable class="list-group" :list="list1" group="people" @change="log">
             <v-card
               raised
-              color="grey lighten-4"
-              class="blue--text list-group-item draggable-card"
+              color="white"
+              class="grey--text list-group-item draggable-card"
               v-for="element in list1"
               :key="element.name">
               <v-card-title primary-title>
                 <div class="title">{{ element.name }}</div>
                 <v-spacer></v-spacer>
-                <v-btn flat icon dark color="warning">
+                <!-- <v-btn flat icon dark color="warning">
                   <v-icon>edit</v-icon>
-                </v-btn>
+                </v-btn> -->
               </v-card-title>
             </v-card>
           </draggable>
         </div>
       </v-flex>
-      <v-flex md6>
-        <div class="draggable-right">
-          <h3 class="titulo-draggable">COMPLETADOS</h3>
+      <v-flex md2>
+        <div class="draggable-box-development">
+          <div class="draggable-header">
+            <h3 class="draggable-header-title">EN CURSO</h3>
+          </div>
+          <draggable class="list-group" :list="list1" group="people" @change="log">
+            <v-card
+              raised
+              color="white"
+              class="grey--text list-group-item draggable-card"
+              v-for="element in list1"
+              :key="element.name">
+              <v-card-title primary-title>
+                <div class="title">{{ element.name }}</div>
+                <v-spacer></v-spacer>
+                <!-- <v-btn flat icon dark color="warning">
+                  <v-icon>edit</v-icon>
+                </v-btn> -->
+              </v-card-title>
+            </v-card>
+          </draggable>
+        </div>
+      </v-flex>
+      <v-flex md2>
+        <div class="draggable-box-test">
+          <div class="draggable-header">
+            <h3 class="draggable-header-title">LISTA PARA TESTEAR</h3>
+          </div>
+          <draggable class="list-group" :list="list1" group="people" @change="log">
+            <v-card
+              raised
+              color="white"
+              class="grey--text list-group-item draggable-card"
+              v-for="element in list1"
+              :key="element.name">
+              <v-card-title primary-title>
+                <div class="title">{{ element.name }}</div>
+                <v-spacer></v-spacer>
+                <!-- <v-btn flat icon dark color="warning">
+                  <v-icon>edit</v-icon>
+                </v-btn> -->
+              </v-card-title>
+            </v-card>
+          </draggable>
+        </div>
+      </v-flex>
+      <v-flex md2>
+        <div class="draggable-box-ready">
+          <div class="draggable-header">
+            <h3 class="draggable-header-title">HECHA</h3>
+          </div>
+          <draggable class="list-group" :list="list1" group="people" @change="log">
+            <v-card
+              raised
+              color="white"
+              class="grey--text list-group-item draggable-card"
+              v-for="element in list1"
+              :key="element.name">
+              <v-card-title primary-title>
+                <div class="title">{{ element.name }}</div>
+                <v-spacer></v-spacer>
+                <!-- <v-btn flat icon dark color="warning">
+                  <v-icon>edit</v-icon>
+                </v-btn> -->
+              </v-card-title>
+            </v-card>
+          </draggable>
+        </div>
+      </v-flex>
+      <v-flex md2>
+        <div class="draggable-box-archived">
+          <div class="draggable-header">
+            <h3 class="draggable-header-title">ARCHIVADA</h3>
+          </div>
           <draggable class="list-group" :list="list2" group="people" @change="log">
             <v-card
-              color="teal lighten-4"
-              class="teal--text list-group-item cajita"
+              color="teal lighten-5"
+              class="grey--text list-group-item draggable-card"
               v-for="element in list2"
               :key="element.name">
               <v-card-title primary-title>
                 <div class="title">{{ element.name }}</div>
                 <v-spacer></v-spacer>
-                <v-btn flat icon dark color="warning">
+                <!-- <v-btn flat icon dark color="warning">
                   <v-icon>edit</v-icon>
-                </v-btn>
+                </v-btn> -->
               </v-card-title>
             </v-card>
           </draggable>
@@ -121,13 +192,11 @@ export default {
 
 <style lang="scss">
   .title-kanban {
-    color: #849c5e;
+    color: #311820;
   }
 
-  .cajita {
-    margin-bottom: 8px;
-    border-radius: 10px;
-    cursor: move;
+  .subtitle-kanban {
+    color: #849c5e;
   }
 
   .draggable-left {
@@ -135,13 +204,6 @@ export default {
     padding: 15px;
     border-radius: 15px;
     margin-right: 10px;
- 
-    .titulo-draggable {
-      color: black;
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
   }
 
   .draggable-right {
@@ -149,28 +211,66 @@ export default {
     padding: 15px;
     border-radius: 15px;
     margin-left: 10px;
-
-    .titulo-draggable {
-      color: black;
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
   }
 
-  .draggable-box {
+  .draggable-header-title {
+    color: gray;
+    margin-bottom: 10px;
+    margin-top: -5px;
+  }
+
+  .draggable-card {
+    margin-bottom: 15px;
+    background-color: white;
+    cursor: move;
+  }
+
+  .draggable-box-new {
     background-color: #f5f5f5;
     margin-left: 5px;
     margin-right: 5px;
-    border-top: solid 2px #999999;
+    border-top: solid 3px #999999;
     padding: 15px;
-
-    .draggable-header-title {
-      color: gray;
-    }
-
-    .draggable-card {
-      margin-bottom: 15px;
-    }
   }
+
+  .draggable-box-prepared {
+    background-color: #f5f5f5;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-top: solid 3px #f57900;
+    padding: 15px;
+  }
+
+  .draggable-box-development {
+    background-color: #f5f5f5;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-top: solid 3px #8aafd6;
+    padding: 15px;
+  }
+
+  .draggable-box-test {
+    background-color: #f5f5f5;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-top: solid 3px #4e9a06;
+    padding: 15px;
+  }
+
+  .draggable-box-ready {
+    background-color: #f5f5f5;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-top: solid 3px #cc0000;
+    padding: 15px;
+  }
+
+  .draggable-box-archived {
+    background-color: #f5f5f5;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-top: solid 3px #5c3566;
+    padding: 15px;
+  }
+
 </style>
