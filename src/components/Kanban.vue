@@ -15,7 +15,7 @@
             <h2 class="draggable-header-title">
               <div class="tittle">
                 <div class="name">NUEVA</div>
-                <div class="counter">1</div>
+                <div class="counter" v-if="newList.length !== 0">{{ newList.length }}</div>
               </div>
               <div class="options">
                 <a href="#" class="option"><v-icon>vertical_align_center</v-icon></a>
@@ -24,12 +24,12 @@
               </div>
             </h2>
           </div>
-          <draggable class="list-group" :list="list1" group="people" @change="log">
+          <draggable class="list-group" :list="newList" group="people" @change="log">
             <v-card
               raised
               color="white"
               class="grey--text list-group-item draggable-card"
-              v-for="(element, index) in list1"
+              v-for="element in newList"
               :key="element.name">
               <div class="card-owner">
                 <div class="card-owner-info">
@@ -38,7 +38,7 @@
                 </div>
               </div>
               <div class="card-content">
-                <h2 class="card-content-title">#{{ index }} {{ element.name }}</h2>
+                <h2 class="card-content-title">#{{ element.id }} {{ element.name }}</h2>
               </div>
               <div class="card-data">
                 <span>No estimada</span>
@@ -79,7 +79,7 @@
             <h2 class="draggable-header-title">
               <div class="tittle">
                 <div class="name">PREPARADA</div>
-                <div class="counter">1</div>
+                <div class="counter" v-if="preparedList.length !== 0">{{ preparedList.length }}</div>
               </div>
               <div class="options">
                 <a href="#" class="option"><v-icon>vertical_align_center</v-icon></a>
@@ -88,12 +88,12 @@
               </div>
             </h2>
           </div>
-          <draggable class="list-group" :list="list1" group="people" @change="log">
+          <draggable class="list-group" :list="preparedList" group="people" @change="log">
             <v-card
               raised
               color="white"
               class="grey--text list-group-item draggable-card"
-              v-for="(element, index) in list1"
+              v-for="element in preparedList"
               :key="element.name">
               <div class="card-owner">
                 <div class="card-owner-info">
@@ -102,7 +102,7 @@
                 </div>
               </div>
               <div class="card-content">
-                <h2 class="card-content-title">#{{ index }} {{ element.name }}</h2>
+                <h2 class="card-content-title">#{{ element.id }} {{ element.name }}</h2>
               </div>
               <div class="card-data">
                 <span>No estimada</span>
@@ -143,7 +143,7 @@
             <h2 class="draggable-header-title">
               <div class="tittle">
                 <div class="name">EN CURSO</div>
-                <div class="counter">1</div>
+                <div class="counter" v-if="developList.length !== 0">{{ developList.length }}</div>
               </div>
               <div class="options">
                 <a href="#" class="option"><v-icon>vertical_align_center</v-icon></a>
@@ -152,12 +152,12 @@
               </div>
             </h2>
           </div>
-          <draggable class="list-group" :list="list1" group="people" @change="log">
+          <draggable class="list-group" :list="developList" group="people" @change="log">
             <v-card
               raised
               color="white"
               class="grey--text list-group-item draggable-card"
-              v-for="(element, index) in list1"
+              v-for="element in developList"
               :key="element.name">
               <div class="card-owner">
                 <div class="card-owner-info">
@@ -166,7 +166,7 @@
                 </div>
               </div>
               <div class="card-content">
-                <h2 class="card-content-title">#{{ index }} {{ element.name }}</h2>
+                <h2 class="card-content-title">#{{ element.id }} {{ element.name }}</h2>
               </div>
               <div class="card-data">
                 <span>No estimada</span>
@@ -207,7 +207,7 @@
             <h2 class="draggable-header-title">
               <div class="tittle">
                 <div class="name">LISTA PARA TESTEAR</div>
-                <div class="counter">1</div>
+                <div class="counter" v-if="testList.length !== 0">{{ testList.length }}</div>
               </div>
               <div class="options">
                 <a href="#" class="option"><v-icon>vertical_align_center</v-icon></a>
@@ -216,12 +216,12 @@
               </div>
             </h2>
           </div>
-          <draggable class="list-group" :list="list1" group="people" @change="log">
+          <draggable class="list-group" :list="testList" group="people" @change="log">
             <v-card
               raised
               color="white"
               class="grey--text list-group-item draggable-card"
-              v-for="(element, index) in list1"
+              v-for="element in testList"
               :key="element.name">
               <div class="card-owner">
                 <div class="card-owner-info">
@@ -230,7 +230,7 @@
                 </div>
               </div>
               <div class="card-content">
-                <h2 class="card-content-title">#{{ index }} {{ element.name }}</h2>
+                <h2 class="card-content-title">#{{ element.id }} {{ element.name }}</h2>
               </div>
               <div class="card-data">
                 <span>No estimada</span>
@@ -271,7 +271,7 @@
             <h2 class="draggable-header-title">
               <div class="tittle">
                 <div class="name">HECHA</div>
-                <div class="counter">1</div>
+                <div class="counter" v-if="doneList.length !== 0">{{ doneList.length }}</div>
               </div>
               <div class="options">
                 <a href="#" class="option"><v-icon>vertical_align_center</v-icon></a>
@@ -280,12 +280,12 @@
               </div>
             </h2>
           </div>
-          <draggable class="list-group" :list="list1" group="people" @change="log">
+          <draggable class="list-group" :list="doneList" group="people" @change="log">
             <v-card
               raised
               color="white"
               class="grey--text list-group-item draggable-card"
-              v-for="(element, index) in list1"
+              v-for="element in doneList"
               :key="element.name">
               <div class="card-owner">
                 <div class="card-owner-info">
@@ -294,7 +294,7 @@
                 </div>
               </div>
               <div class="card-content">
-                <h2 class="card-content-title">#{{ index }} {{ element.name }}</h2>
+                <h2 class="card-content-title">#{{ element.id }} {{ element.name }}</h2>
               </div>
               <div class="card-data">
                 <span>No estimada</span>
@@ -335,7 +335,7 @@
             <h2 class="draggable-header-title">
               <div class="tittle">
                 <div class="name">ARCHIVADA</div>
-                <div class="counter">1</div>
+                <div class="counter" v-if="archivedList.length !== 0">{{ archivedList.length }}</div>
               </div>
               <div class="options">
                 <a href="#" class="option"><v-icon>vertical_align_center</v-icon></a>
@@ -344,11 +344,11 @@
               </div>
             </h2>
           </div>
-          <draggable class="list-group" :list="list2" group="people" @change="log">
+          <draggable class="list-group" :list="archivedList" group="people" @change="log">
             <v-card
               color="teal lighten-5"
               class="grey--text list-group-item draggable-card"
-              v-for="(element, index) in list2"
+              v-for="element in archivedList"
               :key="element.name">
               <div class="card-owner">
                 <div class="card-owner-info">
@@ -357,7 +357,7 @@
                 </div>
               </div>
               <div class="card-content">
-                <h2 class="card-content-title">#{{ index }} {{ element.name }}</h2>
+                <h2 class="card-content-title">#{{ element.id }} {{ element.name }}</h2>
               </div>
               <div class="card-data">
                 <span>No estimada</span>
@@ -408,14 +408,16 @@ export default {
   },
   data () {
     return {
-      list1: [
-        { name: 'Aprender VueElectron', id: 1 },
-        { name: 'Aprender Docker', id: 2 },
-        { name: 'Desarrollar app con Flutter', id: 3 },
-        { name: 'Acabar con el Desarrollo de la Asamblea Legislativa', id: 4 }
+      newList: [
+        { name: 'Firmas en Plantillas Iniciales', id: 101 },
+        { name: 'Pantalla de subida de Archivos', id: 102 }
       ],
-      list2: [
-        { name: 'Acabar la Tesis', id: 5 },
+      preparedList: [],
+      developList: [],
+      testList: [],
+      doneList: [],
+      archivedList: [
+        { name: 'Acabar la Tesis', id: 9 },
         { name: 'Encontrar Trabajo', id: 6 },
         { name: 'Aprender Vue', id: 7 }
       ]
@@ -478,7 +480,6 @@ export default {
     position: relative;
 
     .draggable-header-title {
-      // margin-bottom: 10px;
       font-size: 1rem;
       align-items: center;
       color:#555;
@@ -594,48 +595,55 @@ export default {
 
   .draggable-box-new {
     background-color: #f5f5f5;
-    margin-left: 5px;
-    margin-right: 5px;
+    // background-color: red;
     border-top: solid 3px #999999;
     padding: 10px;
+    margin: 0 5px 0 0;
+    overflow-y: auto;
+    height: 100%;
   }
 
   .draggable-box-prepared {
     background-color: #f5f5f5;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 0 5px 0 0;
+    overflow-y: auto;
+    height: 100%;
     border-top: solid 3px #f57900;
     padding: 10px;
   }
 
   .draggable-box-development {
     background-color: #f5f5f5;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 0 5px 0 0;
+    overflow-y: auto;
+    height: 100%;
     border-top: solid 3px #8aafd6;
     padding: 10px;
   }
 
   .draggable-box-test {
     background-color: #f5f5f5;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 0 5px 0 0;
+    overflow-y: auto;
+    height: 100%;
     border-top: solid 3px #4e9a06;
     padding: 10px;
   }
 
   .draggable-box-ready {
     background-color: #f5f5f5;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 0 5px 0 0;
+    overflow-y: auto;
+    height: 100%;
     border-top: solid 3px #cc0000;
     padding: 10px;
   }
 
   .draggable-box-archived {
     background-color: #f5f5f5;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 0 5px 0 0;
+    overflow-y: auto;
+    height: 100%;
     border-top: solid 3px #5c3566;
     padding: 10px;
   }

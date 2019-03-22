@@ -37,7 +37,7 @@ Mira [Configuration Reference](https://nklayman.github.io/vue-cli-plugin-electro
 - **Drag & Drop** con la librería [VueDraggable](https://madewithvuejs.com/vue-draggable)
 
 <div align="center">
-    <img src="src/assets/kanban.gif" width="500px">
+    <img src="src/assets/kanbannn.gif" width="600px">
 </div>
 
 
