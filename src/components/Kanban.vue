@@ -24,7 +24,7 @@
               </div>
             </h2>
           </div>
-          <draggable class="list-group" :list="newList" group="people" @change="log">
+          <draggable class="list-group" :list="newList" group="tasks" @change="log">
             <v-card
               raised
               color="white"
@@ -38,7 +38,7 @@
                 </div>
               </div>
               <div class="card-content">
-                <h2 class="card-content-title">#{{ element.id }} {{ element.name }}</h2>
+                <h2 class="card-content-title"><strong>#{{ element.id.substring(0, 3) }}</strong> {{ element.name }}</h2>
               </div>
               <div class="card-data">
                 <span>No estimada</span>
@@ -88,7 +88,7 @@
               </div>
             </h2>
           </div>
-          <draggable class="list-group" :list="preparedList" group="people" @change="log">
+          <draggable class="list-group" :list="preparedList" group="tasks" @change="log($event, 'prepareds')">
             <v-card
               raised
               color="white"
@@ -102,7 +102,7 @@
                 </div>
               </div>
               <div class="card-content">
-                <h2 class="card-content-title">#{{ element.id }} {{ element.name }}</h2>
+                <h2 class="card-content-title"><strong>#{{ element.id.substring(0, 3) }}</strong> {{ element.name }}</h2>
               </div>
               <div class="card-data">
                 <span>No estimada</span>
@@ -152,7 +152,7 @@
               </div>
             </h2>
           </div>
-          <draggable class="list-group" :list="developList" group="people" @change="log">
+          <draggable class="list-group" :list="developList" group="tasks" @change="log">
             <v-card
               raised
               color="white"
@@ -166,7 +166,7 @@
                 </div>
               </div>
               <div class="card-content">
-                <h2 class="card-content-title">#{{ element.id }} {{ element.name }}</h2>
+                <h2 class="card-content-title"><strong>#{{ element.id.substring(0, 3) }}</strong> {{ element.name }}</h2>
               </div>
               <div class="card-data">
                 <span>No estimada</span>
@@ -216,7 +216,7 @@
               </div>
             </h2>
           </div>
-          <draggable class="list-group" :list="testList" group="people" @change="log">
+          <draggable class="list-group" :list="testList" group="tasks" @change="log">
             <v-card
               raised
               color="white"
@@ -230,7 +230,7 @@
                 </div>
               </div>
               <div class="card-content">
-                <h2 class="card-content-title">#{{ element.id }} {{ element.name }}</h2>
+                <h2 class="card-content-title"><strong>#{{ element.id.substring(0, 3) }}</strong> {{ element.name }}</h2>
               </div>
               <div class="card-data">
                 <span>No estimada</span>
@@ -280,7 +280,7 @@
               </div>
             </h2>
           </div>
-          <draggable class="list-group" :list="doneList" group="people" @change="log">
+          <draggable class="list-group" :list="doneList" group="tasks" @change="log">
             <v-card
               raised
               color="white"
@@ -294,7 +294,7 @@
                 </div>
               </div>
               <div class="card-content">
-                <h2 class="card-content-title">#{{ element.id }} {{ element.name }}</h2>
+                <h2 class="card-content-title"><strong>#{{ element.id.substring(0, 3) }}</strong> {{ element.name }}</h2>
               </div>
               <div class="card-data">
                 <span>No estimada</span>
@@ -344,7 +344,7 @@
               </div>
             </h2>
           </div>
-          <draggable class="list-group" :list="archivedList" group="people" @change="log">
+          <draggable class="list-group" :list="archivedList" group="tasks" @change="log">
             <v-card
               color="teal lighten-5"
               class="grey--text list-group-item draggable-card"
@@ -357,7 +357,7 @@
                 </div>
               </div>
               <div class="card-content">
-                <h2 class="card-content-title">#{{ element.id }} {{ element.name }}</h2>
+                <h2 class="card-content-title"><strong>#{{ element.id.substring(0, 3) }}</strong> {{ element.name }}</h2>
               </div>
               <div class="card-data">
                 <span>No estimada</span>
@@ -399,6 +399,8 @@
 </template>
 <script>
 import draggable from 'vuedraggable'
+import { db } from '../main'
+
 export default {
   name: 'two-lists',
   display: 'Two Lists',
@@ -408,20 +410,23 @@ export default {
   },
   data () {
     return {
-      newList: [
-        { name: 'Firmas en Plantillas Iniciales', id: 101 },
-        { name: 'Pantalla de subida de Archivos', id: 102 }
-      ],
+      newList: [],
       preparedList: [],
       developList: [],
       testList: [],
       doneList: [],
-      archivedList: [
-        { name: 'Acabar la Tesis', id: 9 },
-        { name: 'Encontrar Trabajo', id: 6 },
-        { name: 'Aprender Vue', id: 7 }
-      ]
+      archivedList: []
     }
+  },
+  created () {
+    // Obteniendo tareas nuevas de firestore
+    this.getNews()
+
+    // Obteniendo tareas preparadas de firestore
+    this.getPrepareds()
+
+    // Obteniendo tareas archivadas de firestore
+    this.getArchiveds()
   },
   methods: {
     add: function () {
@@ -435,8 +440,57 @@ export default {
         name: `${el.name} cloned`
       }
     },
-    log: function (evt) {
+    log: function (evt, documento) {
       window.console.log(evt)
+      if (evt.added) {
+        window.console.log('Nuevo Elemento en la lista de ', documento)
+        const data = {
+          description: evt.added.element.name
+        }
+        db.collection(documento).doc(evt.added.element.id).set(data).then(response => {
+          window.console.log('Guardado tarea en firestore')
+          this.getPrepareds()
+        })
+      }
+
+      if (evt.removed) {
+        db.collection('news').doc(evt.removed.element.id).delete().then(response => {
+          window.console.log('Eliminando tarea de firestore')
+        })
+      }
+    },
+    getNews () {
+      db.collection('news').onSnapshot(snapshot => {
+        this.newList = []
+        snapshot.forEach(doc => {
+          this.newList.push({
+            id: doc.id,
+            name: doc.data().description
+          })
+        })
+      })
+    },
+    getPrepareds () {
+      this.preparedList = []
+      db.collection('prepareds').onSnapshot(snapshot => {
+        snapshot.forEach(doc => {
+          this.preparedList.push({
+            id: doc.id,
+            name: doc.data().description
+          })
+        })
+      })
+    },
+    getArchiveds () {
+      this.archivedList = []
+      db.collection('archiveds').onSnapshot(snapshot => {
+        snapshot.forEach(doc => {
+          this.archivedList.push({
+            id: doc.id,
+            name: doc.data().description
+          })
+        })
+      })
     }
   }
 }
