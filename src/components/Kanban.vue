@@ -3,7 +3,7 @@
     <div class="kanban-header">
       <header>
         <h1 class="text-xs-left">
-          <span class="project-name">ASAMBLEA v_3.0.0</span>
+          <span class="project-name">ASAMBLEA_LEGISLATIVA v_3.0.0</span>
           <span class="greeen">KANBAN</span>
         </h1>
       </header>
@@ -429,25 +429,14 @@ export default {
     this.getArchiveds()
   },
   methods: {
-    add: function () {
-      this.list.push({ name: 'Juan' })
-    },
-    replace: function () {
-      this.list = [{ name: 'Edgard' }]
-    },
-    clone: function (el) {
-      return {
-        name: `${el.name} cloned`
-      }
-    },
-    log: function (evt, documento) {
+    log: function (evt, pLista) {
       window.console.log(evt)
       if (evt.added) {
-        window.console.log('Nuevo Elemento en la lista de ', documento)
+        window.console.log('Nuevo Elemento en la lista de ', pLista)
         const data = {
           description: evt.added.element.name
         }
-        db.collection(documento).doc(evt.added.element.id).set(data).then(response => {
+        db.collection(pLista).doc(evt.added.element.id).set(data).then(response => {
           window.console.log('Guardado tarea en firestore')
           this.getPrepareds()
         })
